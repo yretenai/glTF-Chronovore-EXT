@@ -5,5 +5,5 @@ While I am much too insignificant to even bother requesting a prefix, I still wa
 
 Prefix: `LEGIAYAYANA_` (unapproved, unreserved as of 2022/09/08)
 
-- LEGIAYAYANA_packed_arbitrary
+- LEGIAYAYANA_packing_arbitrary
 - LEGIAYAYANA_nodegraph_material
