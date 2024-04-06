@@ -12,7 +12,7 @@ bl_info = {
 	"blender": (4, 1, 0),
 	'location': 'File > Import > glTF 2.0',
 	'description': '',
-	'tracker_url': "https://github.com/KhronosGroup/glTF-Blender-IO/issues/",
+	'tracker_url': "https://github.com/yretenai/glTF-Chronovore-EXT/issues/",
 	'isDraft': False,
 	'developer': "chronovore",
 	'url': 'https://github.com/yretenai/glTF-Chronovore-EXT',
