@@ -1,8 +1,8 @@
 import bpy
 from io_scene_gltf2.io.com.gltf2_io_extensions import Extension
 from io_scene_gltf2.io.com.gltf2_io import TextureInfo
-from io_scene_gltf2.blender.imp.gltf2_blender_texture import texture
-from io_scene_gltf2.blender.imp.gltf2_blender_material_utils import MaterialHelper
+from io_scene_gltf2.blender.imp.texture import texture
+from io_scene_gltf2.blender.imp.material_utils import MaterialHelper
 
 
 bl_info = {
