@@ -91,7 +91,7 @@ class glTF2ImportUserExtension:
 			group_node.node_tree = bpy.data.node_groups[workflow_name]
 			mh.links.new(group_node.outputs[0], out_node.inputs[0])
 		else:
-			print('unknown workflow "%s" on material "%s"' % (workflow_name, mat.name))
+			gltf.log.warning('unknown workflow "%s" on material "%s"' % (workflow_name, mat.name))
 
 		texture_list = material_attr.get('textures', {})
 		for texture_name in texture_list:
