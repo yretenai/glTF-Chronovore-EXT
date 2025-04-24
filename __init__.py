@@ -71,7 +71,10 @@ class glTF2ImportUserExtension:
 
 		material_attr = exts['CHRONOVORE_material_attributes']
 
-		workflow_name = material_attr.get('workflow', 'Basic Shader')
+		workflow_name = material_attr.get('workflow', 'Basic Shader').strip()
+
+		if len(workflow_name) == 0:
+			workflow_name = "glTF Shader"
 
 		x = -200
 		y = 0
@@ -127,15 +130,6 @@ class glTF2ImportUserExtension:
 			if color_name in group_node.inputs:
 				mh.links.new(value_node.outputs[0], group_node.inputs[color_name])
 			y -= height2
-
-			alpha_node_name = color_name + ' Alpha'
-			value_node = mh.nodes.new('ShaderNodeValue')
-			value_node.label = alpha_node_name
-			value_node.location = x, y
-			value_node.outputs[0].default_value = color_list[color_name][3]
-			if alpha_node_name in group_node.inputs:
-				mh.links.new(value_node.outputs[0], group_node.inputs[alpha_node_name])
-			y -= height
 
 
 def register():
