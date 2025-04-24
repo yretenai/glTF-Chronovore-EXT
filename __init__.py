@@ -8,10 +8,10 @@ from io_scene_gltf2.blender.imp.material_utils import MaterialHelper
 bl_info = {
 	"name": "glTF Chronovore Importer Extension",
 	"category": "Generic",
-	"version": (1, 0, 0),
-	"blender": (4, 1, 0),
+	"version": (1, 1, 0),
+	"blender": (4, 3, 0),
 	'location': 'File > Import > glTF 2.0',
-	'description': '',
+	'description': 'Chronovore\'s glTF extensions.',
 	'tracker_url': "https://github.com/yretenai/glTF-Chronovore-EXT/issues/",
 	'isDraft': False,
 	'developer': "chronovore",
@@ -19,52 +19,14 @@ bl_info = {
 }
 
 
-glTF_extension_name = "CHRONOVORE_material_attributes"
-
-
-class ChronovoreImporterExtensionProperties(bpy.types.PropertyGroup):
-	enabled: bpy.props.BoolProperty(
-		name=bl_info["name"],
-		description='Run this extension while importing glTF file.',
-		default=True)
-
-
-class GLTF_PT_UserExtensionPanel(bpy.types.Panel):
-
-	bl_space_type = 'FILE_BROWSER'
-	bl_region_type = 'TOOL_PROPS'
-	bl_label = "Enabled"
-	bl_parent_id = "GLTF_PT_import_user_extensions"
-	bl_options = {'DEFAULT_CLOSED'}
-
-	@classmethod
-	def poll(cls, context):
-		sfile = context.space_data
-		operator = sfile.active_operator
-		return operator.bl_idname == "IMPORT_SCENE_OT_gltf"
-
-	def draw_header(self, context):
-		props = bpy.context.scene.ChronovoreImporterExtensionProperties
-		self.layout.prop(props, 'enabled')
-
-	def draw(self, context):
-		layout = self.layout
-		layout.use_property_split = True
-		layout.use_property_decorate = False
-
-		props = bpy.context.scene.ChronovoreImporterExtensionProperties
-		layout.active = props.enabled
-
-
 class glTF2ImportUserExtension:
 	def __init__(self):
-		self.properties = bpy.context.scene.ChronovoreImporterExtensionProperties
-		self.extensions = [Extension(name="CHRONOVORE_material_attributes", extension={}, required=False)]
+		self.extensions = [
+			Extension(name="CHRONOVORE_material_attributes", extension={}, required=False),
+			Extension(name="CHRONOVORE_terrain_tile", extension={}, required=False),
+		]
 
 	def gather_import_material_after_hook(self, pymaterial, vertex_color, mat, gltf):
-		if not self.properties.enabled:
-			return
-
 		exts = pymaterial.extensions or {}
 		if not 'CHRONOVORE_material_attributes' in exts:
 			return
@@ -120,7 +82,7 @@ class glTF2ImportUserExtension:
 				mh.links.new(value_node.outputs[0], group_node.inputs[scalar_name])
 			y -= height
 
-		height2 = 275
+		height = 275
 		color_list = material_attr.get('colors', {})
 		for color_name in color_list:
 			value_node = mh.nodes.new('ShaderNodeRGB')
@@ -129,31 +91,10 @@ class glTF2ImportUserExtension:
 			value_node.outputs[0].default_value = color_list[color_name]
 			if color_name in group_node.inputs:
 				mh.links.new(value_node.outputs[0], group_node.inputs[color_name])
-			y -= height2
+			y -= height
 
 
-def register():
-	bpy.utils.register_class(ChronovoreImporterExtensionProperties)
-	bpy.types.Scene.ChronovoreImporterExtensionProperties = bpy.props.PointerProperty(type=ChronovoreImporterExtensionProperties)
+def register(): pass
 
 
-def unregister():
-	unregister_panel()
-	bpy.utils.unregister_class(ChronovoreImporterExtensionProperties)
-	del bpy.types.Scene.ChronovoreImporterExtensionProperties
-
-
-def register_panel():
-	try:
-		bpy.utils.register_class(GLTF_PT_UserExtensionPanel)
-	except Exception:
-		pass
-
-	return unregister_panel
-
-
-def unregister_panel():
-	try:
-		bpy.utils.unregister_class(GLTF_PT_UserExtensionPanel)
-	except Exception:
-		pass
+def unregister(): pass
