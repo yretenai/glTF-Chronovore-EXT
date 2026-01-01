@@ -3,11 +3,14 @@
 This started off because I basically wanted to exert more control over materials in the [glTF Blender addon](https://github.com/KhronosGroup/glTF-Blender-IO).
 While I can't get a prefix due to these not being contained to a single project and I'm not an organization, I still wanted to properly document the format of the schemas should people want to implement them.
 
+A vague implementation exists in my project [glTFScaffold](https://github.com/neptuwunium/glTFScaffold/tree/develop/Extensions).
+
 Prefix: `NEPTUWUNIUM_` (unapproved, unreserved as of 2024/02/05)
 
 - NEPTUWUNIUM_material_attributes
 - NEPTUWUNIUM_terrain_tile
 - NEPTUWUNIUM_small_bones
+- NEPTUWUNIUM_bone_palette
 
 ## NEPTUWUNIUM_material_attributes
 
@@ -89,7 +92,10 @@ Support for VEC3, VEC2, and SCALAR bone weights and bone indices.
       "count": 585,
       "type": "VEC2",
       "normalized": false,
-      "name": "JOINTS_0" // note: this must be present or accessors may not be properly recognized
+      "name": "JOINTS_0", // note: this must be present or accessors may not be properly recognized
+      "extensions": {
+        "NEPTUWUNIUM_small_bones": { }
+      }
     },
     {
       "bufferView": 1,
@@ -98,11 +104,50 @@ Support for VEC3, VEC2, and SCALAR bone weights and bone indices.
       "count": 585,
       "type": "VEC2",
       "normalized": true,
-      "name": "WEIGHTS_0" // note: this must be present or accessors may not be properly recognized
+      "name": "WEIGHTS_0", // note: this must be present or accessors may not be properly recognized
+      "extensions": {
+        "NEPTUWUNIUM_small_bones": { }
+      }
     }
-  ],
-  "extensions": {
-    "NEPTUWUNIUM_small_bones": { }
-  }
+  ]
+}
+```
+
+## NEPTUWUNIUM_bone_palette
+
+Remaps bone indices based on a secondary lookup list.
+
+```jsonc
+{
+  "accessors": [
+    {
+      "bufferView": 1,
+      "byteOffset": 7032,
+      "componentType": 5123,
+      "count": 585,
+      "type": "VEC4",
+      "normalized": false,
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 11712,
+      "componentType": 5126,
+      "count": 585,
+      "type": "VEC4",
+      "extensions": {
+        "NEPTUWUNIUM_bone_palette": {
+          "palette": 2 // accessorId
+        }
+      }
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 21072,
+      "componentType": 5123,
+      "count": 64,
+      "type": "SCALAR",
+      "normalized": false,
+    }
+  ]
 }
 ```
