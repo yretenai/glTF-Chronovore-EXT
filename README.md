@@ -1,7 +1,7 @@
 # glTF-Neptuwunium-EXT
 
 This started off because I basically wanted to exert more control over materials in the [glTF Blender addon](https://github.com/KhronosGroup/glTF-Blender-IO).
-While I am much too insignificant to even bother requesting a prefix, I still wanted to properly document the format of the schemas should people want to implement them.
+While I can't get a prefix due to these not being contained to a single project and I'm not an organization, I still wanted to properly document the format of the schemas should people want to implement them.
 
 Prefix: `NEPTUWUNIUM_` (unapproved, unreserved as of 2024/02/05)
 
@@ -89,7 +89,7 @@ Support for VEC3, VEC2, and SCALAR bone weights and bone indices.
       "count": 585,
       "type": "VEC2",
       "normalized": false,
-      "name": "JOINTS_0"
+      "name": "JOINTS_0" // note: this must be present or accessors may not be properly recognized
     },
     {
       "bufferView": 1,
@@ -98,7 +98,7 @@ Support for VEC3, VEC2, and SCALAR bone weights and bone indices.
       "count": 585,
       "type": "VEC2",
       "normalized": true,
-      "name": "WEIGHTS_0"
+      "name": "WEIGHTS_0" // note: this must be present or accessors may not be properly recognized
     }
   ],
   "extensions": {
