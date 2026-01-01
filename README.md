@@ -9,8 +9,10 @@ Prefix: `NEPTUWUNIUM_` (unapproved, unreserved as of 2024/02/05)
 
 - NEPTUWUNIUM_material_attributes
 - NEPTUWUNIUM_terrain_tile
-- NEPTUWUNIUM_small_bones
-- NEPTUWUNIUM_bone_palette
+- NEPTUWUNIUM_small_bones*
+- NEPTUWUNIUM_bone_palette*
+
+Entries marked with * need [my fork of the blender glTF addon](https://github.com/neptuwunium/glTF-Blender-IO) as it relies on accessor extensions, which are not ([yet](https://github.com/KhronosGroup/glTF-Blender-IO/issues/2634)) supported.
 
 ## NEPTUWUNIUM_material_attributes
 
@@ -109,6 +111,9 @@ Support for VEC3, VEC2, and SCALAR bone weights and bone indices.
         "NEPTUWUNIUM_small_bones": { }
       }
     }
+  ],
+  "extensionsRequired": [
+    "NEPTUWUNIUM_small_bones"
   ]
 }
 ```
@@ -148,6 +153,9 @@ Remaps bone indices based on a secondary lookup list.
       "type": "SCALAR",
       "normalized": false,
     }
+  ],
+  "extensionsRequired": [
+    "NEPTUWUNIUM_bone_palette"
   ]
 }
 ```
