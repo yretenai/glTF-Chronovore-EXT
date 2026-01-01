@@ -4,7 +4,7 @@ from io_scene_gltf2.blender.imp.texture import texture
 from io_scene_gltf2.blender.imp.material_utils import MaterialHelper
 
 
-def CHRONOVORE_material_attributes(material_attr, pymaterial, vertex_color, mat, gltf):
+def NEPTUWUNIUM_material_attributes(material_attr, pymaterial, vertex_color, mat, gltf):
 		workflow_name = material_attr.get('workflow', 'Basic Shader').strip()
 
 		if len(workflow_name) == 0:

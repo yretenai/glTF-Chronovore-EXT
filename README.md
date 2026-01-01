@@ -1,14 +1,14 @@
-# glTF-Chronovore-EXT
+# glTF-Neptuwunium-EXT
 
 This started off because I basically wanted to exert more control over materials in the [glTF Blender addon](https://github.com/KhronosGroup/glTF-Blender-IO).
 While I am much too insignificant to even bother requesting a prefix, I still wanted to properly document the format of the schemas should people want to implement them.
 
-Prefix: `CHRONOVORE_` (unapproved, unreserved as of 2024/02/05)
+Prefix: `NEPTUWUNIUM_` (unapproved, unreserved as of 2024/02/05)
 
-- CHRONOVORE_material_attributes
-- CHRONOVORE_terrain_tile
+- NEPTUWUNIUM_material_attributes
+- NEPTUWUNIUM_terrain_tile
 
-## CHRONOVORE_material_attributes
+## NEPTUWUNIUM_material_attributes
 
 unassociated material reference values, usually from shader pipelines.
 
@@ -18,7 +18,7 @@ unassociated material reference values, usually from shader pipelines.
     {
       "name": "Nya",
       "extensions": {
-        "CHRONOVORE_material_attributes": {
+        "NEPTUWUNIUM_material_attributes": {
           "workflow": "Node Graph Shader", // Shader name or node graph name (in blender)
           "textures": {
             "Albedo": { // TextureInfo
@@ -39,7 +39,7 @@ unassociated material reference values, usually from shader pipelines.
 }
 ```
 
-## CHRONOVORE_terrain_tile
+## NEPTUWUNIUM_terrain_tile
 
 A reference to a 2D heightmap for terrian. (Still unimplemented.)
 
@@ -49,14 +49,14 @@ A reference to a 2D heightmap for terrian. (Still unimplemented.)
     {
       "name": "Nya",
       "extensions": {
-        "CHRONOVORE_terrain_tile": {
+        "NEPTUWUNIUM_terrain_tile": {
           "tile": 0,
         }
       }
     }
   ],
   "extensions": {
-    "CHRONOVORE_terrain_tile": {
+    "NEPTUWUNIUM_terrain_tile": {
       "tile": [
         {
           "heightmap": { // TextureInfo
