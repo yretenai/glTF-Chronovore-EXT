@@ -32,6 +32,17 @@ class glTF2ImportUserExtension:
 		if 'NEPTUWUNIUM_material_attributes' in exts:
 			NEPTUWUNIUM_material_attributes(exts['NEPTUWUNIUM_material_attributes'], pymaterial, vertex_color, mat, gltf)
 
+	def decode_accessor_after_hook(self, pyaccessor, array, gltf):
+		exts = pyaccessor.extensions or {}
+		if 'NEPTUWUNIUM_small_bones' in gltf.extensions:
+			name = pyaccessor.name
+			if (name.startswith("JOINTS_") or name.startswith("WEIGHTS_")) and array.shape[1] < 4:
+				import numpy as np
+				adj = np.zeros((array.shape[0], 4), dtype=array.dtype)
+				adj[:, :array.shape[1]] = array
+				return adj
+		return None
+
 
 def register(): pass
 

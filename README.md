@@ -7,12 +7,13 @@ Prefix: `NEPTUWUNIUM_` (unapproved, unreserved as of 2024/02/05)
 
 - NEPTUWUNIUM_material_attributes
 - NEPTUWUNIUM_terrain_tile
+- NEPTUWUNIUM_small_bones
 
 ## NEPTUWUNIUM_material_attributes
 
 unassociated material reference values, usually from shader pipelines.
 
-```json
+```jsonc
 {
   "materials": [
     {
@@ -43,7 +44,7 @@ unassociated material reference values, usually from shader pipelines.
 
 A reference to a 2D heightmap for terrian. (Still unimplemented.)
 
-```json
+```jsonc
 {
   "nodes": [
     {
@@ -70,6 +71,38 @@ A reference to a 2D heightmap for terrian. (Still unimplemented.)
         }
       ]
     }
+  }
+}
+```
+
+## NEPTUWUNIUM_small_bones
+
+Support for VEC3, VEC2, and SCALAR bone weights and bone indices.
+
+```jsonc
+{
+  "accessors": [
+    {
+      "bufferView": 1,
+      "byteOffset": 7032,
+      "componentType": 5123,
+      "count": 585,
+      "type": "VEC2",
+      "normalized": false,
+      "name": "JOINTS_0"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 9372,
+      "componentType": 5123,
+      "count": 585,
+      "type": "VEC2",
+      "normalized": true,
+      "name": "WEIGHTS_0"
+    }
+  ],
+  "extensions": {
+    "NEPTUWUNIUM_small_bones": { }
   }
 }
 ```
