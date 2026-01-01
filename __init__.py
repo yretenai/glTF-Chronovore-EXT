@@ -41,7 +41,7 @@ class glTF2ImportUserExtension:
 		mutated = array.value
 
 		if 'NEPTUWUNIUM_bone_palette' in exts and name.startswith('JOINTS_'):
-			palette = BinaryData.decode_accessor(gltf, gltf.accessors[exts['NEPTUWUNIUM_bone_palette']['palette']], cache=True)
+			palette = BinaryData.decode_accessor(gltf, exts['NEPTUWUNIUM_bone_palette']['palette'], cache=True)
 			mutated = palette[mutated]
 
 		if 'NEPTUWUNIUM_small_bones' in exts and (name.startswith("JOINTS_") or name.startswith("WEIGHTS_")) and mutated.shape[1] < 4:
