@@ -12,7 +12,7 @@ Prefix: `NEPTUWUNIUM_` (unapproved, unreserved as of 2024/02/05)
 - NEPTUWUNIUM_small_bones*
 - NEPTUWUNIUM_bone_palette*
 
-Entries marked with * need [my fork of the blender glTF addon](https://github.com/neptuwunium/glTF-Blender-IO) as it relies on accessor extensions, which are not ([yet](https://github.com/KhronosGroup/glTF-Blender-IO/issues/2634)) supported.
+Entries marked with * need [my fork of the blender glTF addon](https://github.com/neptuwunium/glTF-Blender-IO) as it relies on accessor extensions, which are not ([yet](https://github.com/KhronosGroup/glTF-Blender-IO/pull/2635)) supported.
 
 ## NEPTUWUNIUM_material_attributes
 
