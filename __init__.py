@@ -42,18 +42,14 @@ class glTF2ImportUserExtension:
 		mutated = array.value
 
 		if name is not None:
-			print("incoming", name, mutated.shape)
 			if 'NEPTUWUNIUM_bone_palette' in exts and name.startswith('JOINTS_'):
 				palette = BinaryData.decode_accessor(gltf, exts['NEPTUWUNIUM_bone_palette']['palette'], cache=True)
-				print("pal", palette[:1].shape)
-				mutated = palette[:1][mutated]
-				print("bone pal", mutated.shape)
+				mutated = palette[:, 0][mutated]
 
 			if 'NEPTUWUNIUM_small_bones' in exts and (name.startswith('JOINTS_') or name.startswith('WEIGHTS_')) and mutated.shape[1] < 4:
 				newMutated = np.zeros((mutated.shape[0], 4), dtype=mutated.dtype)
 				newMutated[:, :mutated.shape[1]] = mutated
 				mutated = newMutated
-				print("small bone", mutated.shape)
 
 		if 'NEPTUWUNIUM_vertex_scale' in exts:
 			vtx_scale = exts['NEPTUWUNIUM_vertex_scale']
