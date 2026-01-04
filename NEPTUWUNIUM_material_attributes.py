@@ -8,7 +8,7 @@ def NEPTUWUNIUM_material_attributes(material_attr, pymaterial, vertex_color, mat
 		workflow_name = material_attr.get('workflow', 'Basic Shader').strip()
 
 		if len(workflow_name) == 0:
-			workflow_name = "Basic Shader"
+			workflow_name = 'Basic Shader'
 
 		x = -200
 		y = 0

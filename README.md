@@ -11,6 +11,7 @@ Prefix: `NEPTUWUNIUM_` (unapproved, unreserved as of 2024/02/05)
 - NEPTUWUNIUM_terrain_tile
 - NEPTUWUNIUM_small_bones*
 - NEPTUWUNIUM_bone_palette*
+- NEPTUWUNIUM_vertex_scale*
 
 Entries marked with * need [my fork of the blender glTF addon](https://github.com/neptuwunium/glTF-Blender-IO) as it relies on accessor extensions, which are not ([yet](https://github.com/KhronosGroup/glTF-Blender-IO/pull/2635)) supported.
 
@@ -126,7 +127,7 @@ Remaps bone indices based on a secondary lookup list.
 {
   "accessors": [
     {
-      "bufferView": 1,
+      "bufferView": 0,
       "byteOffset": 7032,
       "componentType": 5123,
       "count": 585,
@@ -134,7 +135,7 @@ Remaps bone indices based on a secondary lookup list.
       "normalized": false,
     },
     {
-      "bufferView": 1,
+      "bufferView": 0,
       "byteOffset": 11712,
       "componentType": 5126,
       "count": 585,
@@ -146,7 +147,7 @@ Remaps bone indices based on a secondary lookup list.
       }
     },
     {
-      "bufferView": 1,
+      "bufferView": 0,
       "byteOffset": 21072,
       "componentType": 5123,
       "count": 64,
@@ -156,6 +157,33 @@ Remaps bone indices based on a secondary lookup list.
   ],
   "extensionsRequired": [
     "NEPTUWUNIUM_bone_palette"
+  ]
+}
+```
+
+## NEPTUWUNIUM_vertex_scale
+
+Multiplies accessor values with another value
+
+```jsonc
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "byteOffset": 0,
+      "componentType": 5123,
+      "count": 585,
+      "type": "VEC4",
+      "extensions": {
+        "NEPTUWUNIUM_vertex_scale": {
+          "offset": [1.0, 2.0, 3.0],
+          "scale": [2.0, 2.0, 2.0]
+        }
+      }
+    }
+  ],
+  "extensionsRequired": [
+    "NEPTUWUNIUM_vertex_scale"
   ]
 }
 ```
