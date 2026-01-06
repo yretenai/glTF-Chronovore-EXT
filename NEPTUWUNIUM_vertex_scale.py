@@ -20,7 +20,7 @@ def NEPTUWUNIUM_vertex_scale(vtx_scale, name, mutated, gltf):
 
 	if 'offset' in vtx_scale:
 		addend_base = np.array(vtx_scale['offset'])
-		addend = np.ones((mutated.shape[1],))
+		addend = np.zeros((mutated.shape[1],))
 		amount = min([addend_base.shape[0], mutated.shape[1]])
 		addend[:amount] = addend[:amount] * addend_base
 		mutated = mutated + addend
