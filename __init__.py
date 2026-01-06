@@ -1,6 +1,7 @@
 from io_scene_gltf2.io.com.gltf2_io_extensions import Extension
 from io_scene_gltf2.io.imp.gltf2_io_binary import BinaryData
 from .NEPTUWUNIUM_material_attributes import NEPTUWUNIUM_material_attributes
+from .NEPTUWUNIUM_vertex_scale import NEPTUWUNIUM_vertex_scale
 import numpy as np
 
 bl_info = {
@@ -52,26 +53,7 @@ class glTF2ImportUserExtension:
 				mutated = newMutated
 
 		if 'NEPTUWUNIUM_vertex_scale' in exts:
-			vtx_scale = exts['NEPTUWUNIUM_vertex_scale']
-
-			if 'component' in vtx_scale:
-				component = vtx_scale["component"]
-				multiplier = mutated[:, component:component+1] * vtx_scale.get("componentScale", 1.0)
-				mutated = np.delete(mutated, component, axis=1) * multiplier
-
-			if 'scale' in vtx_scale:
-				multiplier_base = np.array(vtx_scale['scale'])
-				multiplier = np.ones((mutated.shape[1],))
-				amount = min([multiplier_base.shape[0], mutated.shape[1]])
-				multiplier[:amount] = multiplier[:amount] * multiplier_base
-				mutated = mutated * multiplier
-
-			if 'offset' in vtx_scale:
-				addend_base = np.array(vtx_scale['offset'])
-				addend = np.ones((mutated.shape[1],))
-				amount = min([addend_base.shape[0], mutated.shape[1]])
-				addend[:amount] = addend[:amount] * addend_base
-				mutated = mutated + addend
+			mutated = NEPTUWUNIUM_vertex_scale(exts['NEPTUWUNIUM_vertex_scale'], name, mutated, gltf)
 
 		array.value = mutated
 
