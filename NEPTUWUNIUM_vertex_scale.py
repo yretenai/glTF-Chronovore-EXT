@@ -2,6 +2,7 @@ import bpy
 from io_scene_gltf2.io.com.gltf2_io import TextureInfo
 from io_scene_gltf2.blender.imp.texture import texture
 from io_scene_gltf2.blender.imp.material_utils import MaterialHelper
+import numpy as np
 
 
 def NEPTUWUNIUM_vertex_scale(vtx_scale, name, mutated, gltf):
