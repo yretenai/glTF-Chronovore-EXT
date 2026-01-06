@@ -54,6 +54,11 @@ class glTF2ImportUserExtension:
 		if 'NEPTUWUNIUM_vertex_scale' in exts:
 			vtx_scale = exts['NEPTUWUNIUM_vertex_scale']
 
+			if 'component' in vtx_scale:
+				component = vtx_scale["component"]
+				multiplier = mutated[:, component:component+1] * vtx_scale.get("componentScale", 1.0)
+				mutated = np.delete(mutated, component, axis=1) * multiplier
+
 			if 'scale' in vtx_scale:
 				multiplier_base = np.array(vtx_scale['scale'])
 				multiplier = np.ones((mutated.shape[1],))

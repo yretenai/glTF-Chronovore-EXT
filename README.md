@@ -176,8 +176,10 @@ Multiplies accessor values with another value
       "type": "VEC4",
       "extensions": {
         "NEPTUWUNIUM_vertex_scale": {
-          "offset": [1.0, 2.0, 3.0],
-          "scale": [2.0, 2.0, 2.0]
+          "offset": [1.0, 2.0, 3.0], // adds [1.0, 2.0, 3.0] to all verts[x, y, z]
+          "scale": [2.0, 2.0, 2.0], // multiplies all verts[x, y, z] by [2.0, 2.0, 2.0]
+          "component": 3, // multiplies all verts by vertex[3]
+          "componentScale": 32767.0 // multiplies vertex[3] with 32767
         }
       }
     }
