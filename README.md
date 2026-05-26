@@ -9,11 +9,9 @@ Prefix: `NEPTUWUNIUM_` (unapproved, unreserved as of 2024/02/05)
 
 - NEPTUWUNIUM_material_attributes
 - NEPTUWUNIUM_terrain_tile
-- NEPTUWUNIUM_small_bones*
-- NEPTUWUNIUM_bone_palette*
-- NEPTUWUNIUM_vertex_scale*
-
-Entries marked with * need [my fork of the blender glTF addon](https://github.com/neptuwunium/glTF-Blender-IO) as it relies on accessor extensions, which are not ([yet](https://github.com/KhronosGroup/glTF-Blender-IO/pull/2635)) supported.
+- NEPTUWUNIUM_small_bones
+- NEPTUWUNIUM_bone_palette
+- NEPTUWUNIUM_vertex_scale
 
 ## NEPTUWUNIUM_material_attributes
 
